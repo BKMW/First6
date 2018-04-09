@@ -29,5 +29,9 @@ namespace First6.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<First6.Models.Department> Departments { get; set; }
+
+        public System.Data.Entity.DbSet<First6.Models.Employee> Employees { get; set; }
     }
 }

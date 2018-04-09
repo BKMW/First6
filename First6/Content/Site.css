@@ -1,6 +1,6 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding: 0px;
+    padding: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +22,64 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+
+
+
+/* start side bar */
+#sidebar {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #151719;
+    transition: all 500ms linear;
+    left: -300px;
+    z-index: 3;
+}
+
+    #sidebar.active {
+        left: 0px;
+    }
+    /* move right */
+    /*#sidebar {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: #151719;
+    transition: all 500ms linear;
+    right: -300px;
+    z-index: 3;
+}
+
+    #sidebar.active {
+        right: 0px;
+    }*/
+    /* move */
+
+    #sidebar ul li {
+        color: rgba(230,230,230,.9);
+        list-style: none;
+        padding: 15px 10px;
+        border-bottom: 1px solid rgba(100,100,100,.3);
+    }
+
+    #sidebar .toggle-btn {
+        /*position: absolute;
+        left: 230px;
+        top: 20px;*/
+        position: fixed;
+        left: 30px;
+        top: 30px;
+    }
+
+        #sidebar .toggle-btn span {
+            display: block;
+            width: 30px;
+            height: 5px;
+            background-color: azure;
+            margin: 5px 0;
+        }
+
+/* end side bar */

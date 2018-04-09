@@ -1,0 +1,235 @@
+﻿@model IEnumerable<First6.Models.Employee>
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Index";
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+
+}
+
+<br />
+<div class="row">
+    <div class="col-1">
+    </div>
+    <div class="col-1" style="margin: 15px auto;">
+        <a href="#" onclick="Create()"><i class="fas fa-plus-circle fa-3x"></i></a>
+    </div>
+</div>
+<br />
+
+<h2>Import Excel </h2>
+@using (Html.BeginForm("ImportExcel", "Employees", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <input type="file" id="file" name="file" />
+    </div>
+    <div class="form-group">
+        <input type="submit" name="btnupload" value="Import " class="btn btn-secondary" />
+    </div>
+}
+
+<table id="employees" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.EmployeeId">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position)
+                </td>
+                <td>
+                    <a href="#" onclick="Edit(@item.EmployeeId)">Edit</a>
+                    <a href="#" onclick="Details(@item.EmployeeId)">Details</a>
+                    <a href="#" onclick="Delete(@item.EmployeeId)">Delete</a>
+                </td>
+            </tr>
+
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Department.DepartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmployeeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Position)
+            </th>
+            <th></th>
+        </tr>
+    </tfoot>
+
+</table>
+
+
+
+<!-- export to excel    -->
+<a href="@Url.Action("ExportToExcel","Employees")">Export To Excel Use EPPlus </a>
+<br />
+@Html.ActionLink("Export To Excel", "Reports", new { ReportType = "Excel" }) |
+@Html.ActionLink("Export To PDF", "Reports", new { ReportType = "PDF" }) |
+@Html.ActionLink("Export To Word", "Reports", new { ReportType = "Word" }) |
+@Html.ActionLink("Export To Image", "Reports", new { ReportType = "Image" })
+
+<!-- end  export to excel    -->
+<!-- start modal Delete -->
+<div class="modal fade" id="myModalDelete">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!-- Modal body -->
+            <div class="modal-body" id="modalBodyDelete">
+
+
+                @*@Html.Action("Create", "Employees")*@
+                @*@Html.Partial("DetailsPopup",item)*@
+
+
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="DeleteConfirmed()" data-dismiss="modal">Delete</button>
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal Delete-->
+<!-- start modal -->
+
+<div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body" id="modalBody">
+
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+<!---->
+<div id="loader" style="text-align: center; display: none;">
+    <img src="~/Images/load.png" width="50" />
+</div>
+<!---->
+@*<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>*@
+@*<script src="https://code.jquery.com/jquery-1.12.4.js"></script>*@
+@*<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>*@
+
+
+@section scripts {
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#employees').DataTable();
+        });
+        // get details
+        var Details = function (DepartmentID) {
+
+            var url = "../Employees/Details/" + DepartmentID;
+            $("#modalBody").load(url, function () {
+                $("#myModal").modal("show");
+            })
+
+        }//end details
+        //  get create
+        var Create = function () {
+
+            /////
+            var url = "../Employees/Create";
+            $("#modalBody").load(url, function () {
+                $("#myModal").modal("show");
+            })
+        }// end create
+        //  get edit
+        var Edit = function (DepartmentID) {
+
+            /////
+            var url = "../Employees/Edit/" + DepartmentID;
+            $("#modalBody").load(url, function () {
+                $("#myModal").modal("show");
+            })
+        }// end edit
+        // get delete
+        var DepartmentId = null;
+        var Delete = function (DepartmentID) {
+            DepartmentId = DepartmentID;
+
+            var url = "../Employees/Delete/" + DepartmentID;
+            $("#modalBodyDelete").load(url, function () {
+                $("#myModalDelete").modal("show");
+            })
+            //$.ajax({
+            //    type: "get",
+            //    url: "../Departments/Delete",
+            //    data: { id: DepartmentId },
+            //    success: function () {
+
+            //        $("#myModalDelete").modal("show");
+            //    }
+            //})
+
+
+        }
+        // delete post
+        var DeleteConfirmed = function () {
+            $("#loader").show();
+            $.ajax({
+                type: "post",
+                url: "../Employees/Delete",
+                data: { id: DepartmentId },
+                success: function () {
+                    $("#loader").hide();
+                    $("#myModal").modal("hide");
+                    $("#row_" + DepartmentId).remove();
+                }
+            })
+        }//end delete
+    </script>
+
+}
