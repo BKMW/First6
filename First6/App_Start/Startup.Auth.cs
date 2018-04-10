@@ -6,6 +6,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using First6.Models;
+using Microsoft.Owin.Security.Twitter;
+using Microsoft.Owin.Security;
 
 namespace First6
 {
@@ -50,9 +52,9 @@ namespace First6
             //    clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "pbHFxJITb9ROYBoRCfs1XKW7X",
-            //   consumerSecret: "DQs165Q911WvrziRls06bf2zKRuu8isFXfHHH5nhy8Q8Ej0a01");
+            app.UseTwitterAuthentication(
+               consumerKey: "AsGCZV3R01oGwNsDMW3PzhgWi",
+               consumerSecret: "lcBh183E6BeJ1BEf2XhJz0ldI71UcsKXglPRGh0NqGCxRFMIfW");
 
             //app.UseFacebookAuthentication(
             //   appId: "",
