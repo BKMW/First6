@@ -10,7 +10,16 @@
 
 <br />
 <div class="row">
-    <div class="col-1">
+    <div class="col-11">
+
+        @using (Html.BeginForm("ImportExcel", "Employees", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+    {
+        <h4>Import Excel</h4>
+        <div class="form-group">
+            <input type="file" id="file" name="file" />
+            <input type="submit" name="btnupload" value="Import " class="btn btn-info" />
+        </div>
+}
     </div>
     <div class="col-1" style="margin: 15px auto;">
         <a href="#" onclick="Create()"><i class="fas fa-plus-circle fa-3x"></i></a>
@@ -18,16 +27,7 @@
 </div>
 <br />
 
-<h2>Import Excel </h2>
-@using (Html.BeginForm("ImportExcel", "Employees", FormMethod.Post, new { @enctype = "multipart/form-data" }))
-{
-    <div class="form-group">
-        <input type="file" id="file" name="file" />
-    </div>
-    <div class="form-group">
-        <input type="submit" name="btnupload" value="Import " class="btn btn-secondary" />
-    </div>
-}
+
 
 <table id="employees" class="display" style="width:100%">
     <thead>
@@ -60,9 +60,13 @@
                     @Html.DisplayFor(modelItem => item.Position)
                 </td>
                 <td>
-                    <a href="#" onclick="Edit(@item.EmployeeId)">Edit</a>
+                    @*<a href="#" onclick="Edit(@item.EmployeeId)">Edit</a>
                     <a href="#" onclick="Details(@item.EmployeeId)">Details</a>
-                    <a href="#" onclick="Delete(@item.EmployeeId)">Delete</a>
+                    <a href="#" onclick="Delete(@item.EmployeeId)">Delete</a>*@
+                    <a href="#" onclick="Edit(@item.EmployeeId)"><i class="fas fa-edit" style="color:chocolate"></i></a> |
+                    <a href="#" onclick="Details(@item.EmployeeId)"><i class="fas fa-list" style="color:aqua"></i></a> |
+                    <a href="#" onclick="Delete(@item.EmployeeId)"><i class="fas fa-trash-alt" style="color:crimson"></i></a>
+
                 </td>
             </tr>
 
@@ -101,9 +105,9 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="">
+                @*<h4 class="modal-title">Modal Heading</h4>*@
+                <button type="button" class="close" data-dismiss="modal" style="margin:20px;">&times;</button>
             </div>
             <!-- Modal body -->
             <div class="modal-body" id="modalBodyDelete">
@@ -115,11 +119,11 @@
 
             </div>
             <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="DeleteConfirmed()" data-dismiss="modal">Delete</button>
-                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            @*<div class="modal-footer">*@
+                <button type="button" class="btn btn-danger" onclick="DeleteConfirmed()" data-dismiss="modal" style="margin:10px;">Delete</button>
+                @*<button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>*@
 
-            </div>
+            @*</div>*@
         </div>
     </div>
 </div>
@@ -131,9 +135,9 @@
         <div class="modal-content">
 
             <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="">
+                @*<h4 class="modal-title">Modal Heading</h4>*@
+                <button type="button" class="close" data-dismiss="modal" style="margin:20px;">&times;</button>
             </div>
 
             <!-- Modal body -->
@@ -143,11 +147,11 @@
             </div>
 
             <!-- Modal footer -->
-            <div class="modal-footer">
+            @*<div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 
 
-            </div>
+            </div>*@
         </div>
     </div>
 </div>
@@ -230,6 +234,8 @@
                 }
             })
         }//end delete
+
+       
     </script>
 
 }

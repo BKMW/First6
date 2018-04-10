@@ -51,18 +51,18 @@ namespace First6
             //    clientSecret: "");
 
             //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            //   consumerKey: "pbHFxJITb9ROYBoRCfs1XKW7X",
+            //   consumerSecret: "DQs165Q911WvrziRls06bf2zKRuu8isFXfHHH5nhy8Q8Ej0a01");
 
             //app.UseFacebookAuthentication(
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "313689638129-qb685pl4j9lk9f2tm2948t3t1qklmar7.apps.googleusercontent.com",
+                ClientSecret = "KmLompgIWXt1N8WBP5MLTZi4"
+            });
         }
     }
 }

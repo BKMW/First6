@@ -1,6 +1,9 @@
 ﻿body {
     padding: 0px;
     padding: 0px;
+    /*background: linear-gradient(to right, rgb(128, 128, 128,.6),rgba(230,230,230,.9));*/
+    background-color:lightgray;
+    
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,10 +25,15 @@ select,
 textarea {
     max-width: 280px;
 }
-
-
-
-
+/*login*/
+.login {
+    /*text-align: center;*/
+    border-radius: 5px;
+    margin: 0;
+    padding-top: 20px;
+    /*padding-bottom:100px;*/
+    background-color: rgba(3, 3, 3,.3);
+}
 
 
 /* start side bar */
@@ -42,21 +50,7 @@ textarea {
     #sidebar.active {
         left: 0px;
     }
-    /* move right */
-    /*#sidebar {
-    position: fixed;
-    width: 300px;
-    height: 100%;
-    background: #151719;
-    transition: all 500ms linear;
-    right: -300px;
-    z-index: 3;
-}
-
-    #sidebar.active {
-        right: 0px;
-    }*/
-    /* move */
+   
 
     #sidebar ul li {
         color: rgba(230,230,230,.9);
@@ -66,12 +60,10 @@ textarea {
     }
 
     #sidebar .toggle-btn {
-        /*position: absolute;
-        left: 230px;
-        top: 20px;*/
         position: fixed;
         left: 30px;
         top: 30px;
+        
     }
 
         #sidebar .toggle-btn span {
@@ -80,6 +72,7 @@ textarea {
             height: 5px;
             background-color: azure;
             margin: 5px 0;
+           
         }
 
 /* end side bar */

@@ -1,4 +1,13 @@
-﻿<div id="sidebar" class="">
+﻿<style>
+    .accordion li.open i.fa-chevron-down {
+        -webkit-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+</style>
+
+<div id="sidebar" class="">
     <div class="toggle-btn" onclick="toggleSideBar()">
         <span></span>
         <span></span>
@@ -7,10 +16,25 @@
     </div>
     <ul class="">
         <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"> </i> Home <span class="sr-only">(current)</span></a></li>
-        <li class="nav-item"><a class="nav-link" href="../../Departments/Index"><i class="fas fa-building"></i> Departments</a></li>
-        <li class="nav-item"><a class="nav-link" href="../../Employees/Index"><i class="fas fa-users"> </i> Employees</a></li>
+        <li class="nav-item accordion" id="accordion" onclick="toggleSub1()"><a class="nav-link" href="#"><i class="fas fa-building"></i> Departments <i class="fa fa-chevron-down"></i></a></li>
+        <li id="sub1">
+            <ul class="">
+                <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"> </i> Home <span class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Departments/Index"><i class="fas fa-building"></i> Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Employees/Index"><i class="fas fa-users"> </i> Employees</a></li>
+
+            </ul>
+        </li>
+<li class="nav-item" onclick="toggleSub2()"><a class="nav-link" href="#"><i class="fas fa-users"> </i> Employees</a></li>
+        <li id="sub2">
+            <ul class="">
+                <li class="nav-item"><a class="nav-link" href="/"><i class="fas fa-home"> </i> Home <span class="sr-only">(current)</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Departments/Index"><i class="fas fa-building"></i> Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../Employees/Index"><i class="fas fa-users"> </i> Employees</a></li>
+
+            </ul>
+        </li>
 
     </ul>
 </div>
-
 
