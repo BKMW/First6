@@ -8,10 +8,10 @@ namespace First6.Models
 {
     public class Department
     {
-        //[Display(Name = "Department Id")]
+        [Display(Name = "Department Id")]
         public int DepartmentId { get; set; }
         //[Required]
-        //[Display(Name= "Department Name")]
+        [Display(Name = "Department Name")]
         public string DepartmentName { get; set; }
 
         public virtual ICollection<Employee> Employees { get; set; }

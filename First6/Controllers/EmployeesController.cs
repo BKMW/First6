@@ -51,12 +51,16 @@ namespace First6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName,Position,DepartmentId")] Employee employee)
+        public ActionResult Create([Bind(Include = "EmployeeId,EmployeeName,Position,DepartmentId,File")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Employees.Add(employee);
                 db.SaveChanges();
+              
+                    employee.File.SaveAs(Server.MapPath("~/ImagesEmployees/") + employee.EmployeeId + ".jpg");
+
+                
                 return RedirectToAction("Index");
             }
 
@@ -85,12 +89,17 @@ namespace First6.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName,Position,DepartmentId")] Employee employee)
+        public ActionResult Edit([Bind(Include = "EmployeeId,EmployeeName,Position,DepartmentId,File")] Employee employee)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(employee).State = EntityState.Modified;
                 db.SaveChanges();
+                if (employee.File != null)
+                {
+                    employee.File.SaveAs(Server.MapPath("~/ImagesEmployees/") + employee.EmployeeId + ".jpg");
+
+                }
                 return RedirectToAction("Index");
             }
             ViewBag.DepartmentId = new SelectList(db.Departments, "DepartmentId", "DepartmentName", employee.DepartmentId);
