@@ -63,9 +63,9 @@
                     @*<a href="#" onclick="Edit(@item.EmployeeId)">Edit</a>
                     <a href="#" onclick="Details(@item.EmployeeId)">Details</a>
                     <a href="#" onclick="Delete(@item.EmployeeId)">Delete</a>*@
-                    <a href="#" onclick="Edit(@item.EmployeeId)"><i class="fas fa-edit" style="color:chocolate"></i></a> |
-                    <a href="#" onclick="Details(@item.EmployeeId)"><i class="fas fa-list" style="color:aqua"></i></a> |
-                    <a href="#" onclick="Delete(@item.EmployeeId)"><i class="fas fa-trash-alt" style="color:crimson"></i></a>
+                    <a href="#" onclick="Edit(@item.EmployeeId)" data-placement="left" data-toggle="tooltip" title="Edit" ><i class="fas fa-edit" style="color:chocolate"></i></a> |
+                    <a href="#" onclick="Details(@item.EmployeeId)" data-placement="top" data-toggle="tooltip" title="Details"><i class="fas fa-list" style="color:aqua"></i></a> |
+                    <a href="#" onclick="Delete(@item.EmployeeId)" data-placement="right" data-toggle="tooltip" title="Delete"><i class="fas fa-trash-alt" style="color:crimson"></i></a>
 
                 </td>
             </tr>
@@ -234,7 +234,10 @@
                 }
             })
         }//end delete
-
+        // tooltip use popper.js
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
        
     </script>
 
