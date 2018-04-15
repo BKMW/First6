@@ -11,7 +11,12 @@
 <body>
     <!-- start navbar -->
     <nav class="navbar navbar-expand-lg bg-dark  navbar-dark">
+        <div class=" nav-item toggle-btn1" onclick="toggleSideBar()">
+            <span></span>
+            <span></span>
+            <span></span>
 
+        </div>
         <a class="navbar-brand" href="/" style="width:70px;"> @*:/Root*@</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -19,6 +24,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+
+
                 <li class="nav-item active">
                     <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -31,18 +38,12 @@
                     @*@Html.ActionLink("Employees", "Index", "Employees", new { @class = "nav-link" })*@
                 </li>
                 @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
-                    <li>@Html.ActionLink("Employees", "Index", "Employees")</li>*@
+                <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+                <li>@Html.ActionLink("Employees", "Index", "Employees")</li>*@
 
 
             </ul>
 
-            @*<div class="toggle-btn" onclick="toggleSideBar()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </div>*@
 
             <div class="my-2 my-lg-3">
 

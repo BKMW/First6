@@ -10,6 +10,7 @@ using First6.Models;
 
 namespace First6.Controllers
 {
+    [Authorize]
     public class DepartmentsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

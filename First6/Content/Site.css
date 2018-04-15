@@ -59,20 +59,33 @@ textarea {
         border-bottom: 1px solid rgba(100,100,100,.3);
     }
 
-    #sidebar .toggle-btn {
+    /*#sidebar .toggle-btn {
         position: fixed;
         left: 30px;
         top: 30px;
         
+    }*/
+    .toggle-btn1 {
+        position: absolute;
+        left: 30px;
+        top: 15px;
+       
+    }
+    .toggle-btn1 span {
+        display: block;
+        width: 30px;
+        height: 5px;
+        background-color: azure;
+        margin: 5px 0;
     }
 
-        #sidebar .toggle-btn span {
+        /*#sidebar .toggle-btn span {
             display: block;
             width: 30px;
             height: 5px;
             background-color: azure;
             margin: 5px 0;
            
-        }
+        }*/
 
 /* end side bar */

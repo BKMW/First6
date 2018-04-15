@@ -13,6 +13,7 @@ using OfficeOpenXml;
 
 namespace First6.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
