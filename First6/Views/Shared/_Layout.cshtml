@@ -29,17 +29,20 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/"><i class="fas fa-home"></i> Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../Departments/Index">Departments</a>
-                    @*@Html.ActionLink("Departments", "Index", "Departments", new {@class= "nav-link" })*@
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../Employees/Index">Employees</a>
-                    @*@Html.ActionLink("Employees", "Index", "Employees", new { @class = "nav-link" })*@
-                </li>
-                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
-                <li>@Html.ActionLink("Employees", "Index", "Employees")</li>*@
+                @if (Request.IsAuthenticated)
+                {
+            <li class="nav-item">
+                <a class="nav-link" href="../../Departments/Index">Departments</a>
+                @*@Html.ActionLink("Departments", "Index", "Departments", new {@class= "nav-link" })*@
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../../Employees/Index">Employees</a>
+                @*@Html.ActionLink("Employees", "Index", "Employees", new { @class = "nav-link" })*@
+            </li>
+                }
+            @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
+    <li>@Html.ActionLink("Departments", "Index", "Departments")</li>
+    <li>@Html.ActionLink("Employees", "Index", "Employees")</li>*@
 
 
             </ul>
